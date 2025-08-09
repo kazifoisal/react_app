@@ -1,0 +1,12 @@
+.whole_project{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.initial_part{
+    display: flex;
+    gap: 20px;
+}

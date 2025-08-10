@@ -8,8 +8,8 @@ const Menu = () => {
         <li>
           <NavLink className={({isActive,isPending})=> isActive? "isActiveGreen" : "isPendingBlack" }  to="/" >HomePage</NavLink> 
         </li>
-        <li> <NavLink className={({isActive,isPending})=> isActive? "isActiveGreen" : "isPendingBlack" }  to="/product" >product Page</NavLink> </li>
-        <li><NavLink className={({isActive,isPending})=> isActive? "isActiveGreen" : "isPendingBlack" }  to="/profile" >profile Page</NavLink> </li>
+        <li> <NavLink className={({isActive,isPending})=> isActive? "isActiveGreen" : "isPendingBlack" }  to="/product/00007/priyo" >product Page</NavLink> </li>
+        <li><NavLink className={({isActive,isPending})=> isActive? "isActiveGreen" : "isPendingBlack" }  to="/profile/9729/KJ" >profile Page</NavLink> </li>
       </ul>
     </div>
   );

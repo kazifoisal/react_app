@@ -1,0 +1,17 @@
+.isActiveGreen{
+   color: Green;
+       text-decoration: none;
+
+}
+
+.isPendingBlack{
+   color: rgb(1, 1, 1);
+       text-decoration: none;
+
+}
+
+.menues{
+    list-style: none;
+    font-size: 20px;
+
+}

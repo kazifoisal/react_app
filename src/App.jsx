@@ -1,27 +1,23 @@
-
-
-import React, { useEffect, useState } from 'react'
+import React from "react";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./assets/pages/HomePage";
+import ProductPage from "./assets/pages/ProductPage";
+import NotFoundpage from "./assets/pages/NotFoundpage";
+import Profilepage from "./assets/pages/Profilepage";
 
 const App = () => {
-
-     const[data,setdata]=useState();
-
-useEffect(()=>{
-     (async()=>{
-     let response =  await fetch('https://dummyjson.com/carts');
-
-      let result = await response.json();
-     setdata(result);
-
-     })()
-},[])
-
   return (
-    <div>
-      {JSON.stringify(data)}
-    </div>
-  )
-}
+    <>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/profile" element={<Profilepage />} />
+          <Route path="*" element={<NotFoundpage />} />
+        </Routes>
+      </HashRouter>
+    </>
+  );
+};
 
 export default App;
-

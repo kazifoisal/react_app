@@ -145,75 +145,25 @@
 
 // export default App;
 
-import React, { useState } from "react";
-import "./App.css";
+//
+
+import React, { useEffect, useState } from "react";
 
 const App = () => {
-  const [list, setList] = useState([]);
-  const [objs, setObjs] = useState({
-    firstName: "",
-    lastName: "",
-    Marital_Status: "",
-    Gender: "Male",
-  });
+  const [count, setCount] = useState(0);
 
-
-  const submit = () => {
-     list.push(objs);
-     setList({...list,  firstName: "",
-    lastName: "",
-    Marital_Status: "",
-    Gender: "Male",})
-
-
-    alert(JSON.stringify(list))
+  const clickMe = () => {
+    setCount((prev) => prev + 1);
   };
 
+  useEffect(() => {
+    console.log("Count changed:", count);
+  }, [count]);
+
   return (
-    <div className="whole_project">
-      <form action="">
-        <input
-          onChange={(e) =>
-            setObjs((prev) => ({ ...prev, firstName: e.target.value }))
-          }
-          type="text"
-          placeholder="firstName"
-        />
-        <input
-          onChange={(e) =>
-            setObjs((prev) => ({ ...prev, lastName: e.target.value }))
-          }
-          type="text"
-          placeholder="lastName"
-        />
-
-        <select
-          onChange={(e) =>
-            setObjs((prev) => ({ ...prev, Marital_Status: e.target.value }))
-          }
-        >
-          <option value="">Choose Any</option>
-          <option value="Married">Married</option>
-          <option value="Unmarried">Unmarried</option>
-        </select>
-
-        <div className="radio">
-          <input
-            onChange={(e) => setObjs((prev) => ({ ...prev, Gender: "Male" }))}
-            checked={objs.Gender === "Male"}
-            type="radio"
-          />
-          Male
-          <input
-            onChange={(e) => setObjs((prev) => ({ ...prev, Gender: "Female" }))}
-            checked={objs.Gender === "Female"}
-            type="radio"
-          />
-          Female
-        </div>
-
-        <button onClick={submit}>Submit</button>
-      </form>
+    <div>
+      <h1>{count}</h1>
+      <button onClick={clickMe}>Click</button>
     </div>
   );
 };

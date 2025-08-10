@@ -10,3 +10,15 @@
     display: flex;
     gap: 20px;
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.radio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

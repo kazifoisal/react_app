@@ -52,93 +52,168 @@
 
 // export default App;
 
+// import React, { useState } from "react";
+// import "./App.css"
+
+// const App = () => {
+//   const [list, setList] = useState([]);
+//   const [items, setItems] = useState({
+//     firstName: "",
+//     lastName: "",
+//     email: "",
+//     password: "",
+//   });
+
+//   const create = () => {
+//     list.push(items);
+//     setList([...list]);
+//   };
+
+//   return (
+//     <div className="whole_project">
+//       <div className="form">
+//         <div className="fullName">
+//           <input
+//             onChange={(e) =>
+//               setItems((prev) => ({
+//                 ...prev,
+//                 firstName: e.target.value,
+//               }))
+//             }
+//             type="text"
+//             placeholder="firstName"
+//             className="firstName"
+//           />
+//           <input
+//             onChange={(e) =>
+//               setItems((prev) => ({
+//                 ...prev,
+//                 lastName: e.target.value,
+//               }))
+//             }
+//             type="text"
+//             placeholder="lastName"
+//             className="lastName"
+//           />
+//         </div>
+//         <input
+//           onChange={(e) =>
+//             setItems((prev) => ({
+//               ...prev,
+//               email: e.target.value,
+//             }))
+//           }
+//           type="email"
+//           placeholder="e-mail"
+//         />
+//         <input
+//           onChange={(e) =>
+//             setItems((prev) => ({
+//               ...prev,
+//               password: e.target.value,
+//             }))
+//           }
+//           type="password"
+//           placeholder="password"
+//         />
+//         <div className="btn">
+//           <button onClick={create}>Create Account</button>
+//         </div>
+//       </div>
+
+//       <table>
+//         <tbody>
+//           {list.length !== 0 ? (
+//             list.map((element,index) => {
+//               return(
+//                <tr key={index}>
+//                 <td>{element.firstName}</td>
+//                 <td>{element.lastName}</td>
+//                 <td>{element.email}</td>
+//                 <td>{element.password}</td>
+//               </tr>
+//               )
+//             })
+//           ) : (
+//             <tr><td>Empty</td></tr>
+//           )}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// };
+
+// export default App;
+
 import React, { useState } from "react";
-import "./App.css"
+import "./App.css";
 
 const App = () => {
   const [list, setList] = useState([]);
-  const [items, setItems] = useState({
+  const [objs, setObjs] = useState({
     firstName: "",
     lastName: "",
-    email: "",
-    password: "",
+    Marital_Status: "",
+    Gender: "Male",
   });
 
-  const create = () => {
-    list.push(items);
-    setList([...list]);
+
+  const submit = () => {
+     list.push(objs);
+     setList({...list,  firstName: "",
+    lastName: "",
+    Marital_Status: "",
+    Gender: "Male",})
+
+
+    alert(JSON.stringify(list))
   };
 
   return (
     <div className="whole_project">
-      <div className="form">
-        <div className="fullName">
-          <input
-            onChange={(e) =>
-              setItems((prev) => ({
-                ...prev,
-                firstName: e.target.value,
-              }))
-            }
-            type="text"
-            placeholder="firstName"
-            className="firstName"
-          />
-          <input
-            onChange={(e) =>
-              setItems((prev) => ({
-                ...prev,
-                lastName: e.target.value,
-              }))
-            }
-            type="text"
-            placeholder="lastName"
-            className="lastName"
-          />
-        </div>
+      <form action="">
         <input
           onChange={(e) =>
-            setItems((prev) => ({
-              ...prev,
-              email: e.target.value,
-            }))
+            setObjs((prev) => ({ ...prev, firstName: e.target.value }))
           }
-          type="email"
-          placeholder="e-mail"
+          type="text"
+          placeholder="firstName"
         />
         <input
           onChange={(e) =>
-            setItems((prev) => ({
-              ...prev,
-              password: e.target.value,
-            }))
+            setObjs((prev) => ({ ...prev, lastName: e.target.value }))
           }
-          type="password"
-          placeholder="password"
+          type="text"
+          placeholder="lastName"
         />
-        <div className="btn">
-          <button onClick={create}>Create Account</button>
-        </div>
-      </div>
 
-      <table>
-        <tbody>
-          {list.length !== 0 ? (
-            list.map((element,index) => {
-              return(
-               <tr key={index}>
-                <td>{element.firstName}</td>
-                <td>{element.lastName}</td>
-                <td>{element.email}</td>
-                <td>{element.password}</td>
-              </tr>
-              )
-            })
-          ) : (
-            <tr><td>Empty</td></tr>
-          )}
-        </tbody>
-      </table>
+        <select
+          onChange={(e) =>
+            setObjs((prev) => ({ ...prev, Marital_Status: e.target.value }))
+          }
+        >
+          <option value="">Choose Any</option>
+          <option value="Married">Married</option>
+          <option value="Unmarried">Unmarried</option>
+        </select>
+
+        <div className="radio">
+          <input
+            onChange={(e) => setObjs((prev) => ({ ...prev, Gender: "Male" }))}
+            checked={objs.Gender === "Male"}
+            type="radio"
+          />
+          Male
+          <input
+            onChange={(e) => setObjs((prev) => ({ ...prev, Gender: "Female" }))}
+            checked={objs.Gender === "Female"}
+            type="radio"
+          />
+          Female
+        </div>
+
+        <button onClick={submit}>Submit</button>
+      </form>
     </div>
   );
 };
